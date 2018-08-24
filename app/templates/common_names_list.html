@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{# {% import "bootstrap/wtf.html" as wtf %} #}
+
+{% block title %}
+Flasky
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>This is a CommonName list Form page!</h1>
+</div>
+<div class="center">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>record_id</th>
+                <th>common_name</th>
+                <th>country</th>
+                <th>common_name_py</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for conn in common_names %}
+            <tr>
+                <td>{{ conn.record_id }}</td>
+                <td>{{ conn.common_name }}</td>
+                <td>{{ conn.country }}</td>
+                <td>{{ conn.common_name_py }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{# {{ wtf.quick_form(form) }} #}
+{% endblock %}
+
+
+{% import "_macros.html" as macros %}
+{%if pagination %}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, '.common_name_list') }}
+    </div>
+{% endif %}
+
+
+<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
