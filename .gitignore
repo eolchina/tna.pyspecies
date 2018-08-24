@@ -50,6 +50,9 @@ node_modules
 # local setting
 .env
 
+# MacOs
+.DS_Store
+
 # Custom
 /admin/app/dist
 /admin/static

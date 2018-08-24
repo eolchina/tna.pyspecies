@@ -96,7 +96,7 @@ class CommonName(db.Model):
 
     __tablename__ = 'common_names'
 
-    id = db.Column('record_id', db.String, primary_key=True)
+    id = db.Column('record_id', db.String(), primary_key=True)
     name_code = db.Column(db.String())
     common_name = db.Column(db.String())
     language = db.Column(db.String())
@@ -108,3 +108,9 @@ class CommonName(db.Model):
 
     def __repr__(self):
         return '<CommonName %r>' % self.common_name
+
+class databases(db.Model):
+    """docstring for databases"""
+    __tablename__ = 'databases'
+
+    id = db.Column('database_id', db.Integer, primary_key=True)

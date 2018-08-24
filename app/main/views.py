@@ -34,9 +34,9 @@ def scientific_name_list():
 @main.route('/browse/common_name', methods=['GET', 'POST'])
 def common_name_list():
     page = request.args.get('page', 1, type=int)
-    pagination = CommonName.query.order_by(CommonName.common_name.asc()).paginate(page, 30, False)
+    pagination = CommonName.query.order_by(CommonName.common_name.asc()).paginate(page, per_page=30, error_out=False)
     common_names = pagination.items
-    return render_template('common_names_list.html', common_names=common_names)
+    return render_template('common_names_list.html', common_names=common_names, pagination=pagination)
 
 @main.route('/dis', methods=['GET', 'POST'])
 def dis():

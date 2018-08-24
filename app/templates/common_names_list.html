@@ -33,15 +33,22 @@ Flasky
     </table>
 </div>
 {# {{ wtf.quick_form(form) }} #}
+
+{% import "_macros.html" as macros %}
+{% if pagination %}
+    <div class="pagination">
+        <nav aria-label class="Page navigation">
+            <ul class="pagination">
+        {{ macros.pagination_widget(pagination, '.common_name_list') }}
+        </ul>
+        </nav>
+    </div>
+{% endif %}
+
 {% endblock %}
 
 
-{% import "_macros.html" as macros %}
-{%if pagination %}
-    <div class="pagination">
-        {{ macros.pagination_widget(pagination, '.common_name_list') }}
-    </div>
-{% endif %}
+
 
 
 <p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
